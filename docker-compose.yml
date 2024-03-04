@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  api:
+    image: contacts-backend:${IMAGE_VERSION:-latest}
+    container_name: backend
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    environment:
+      - DB_DSN=postgres://root:secret@postgres:5432/contacts
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:16.2-alpine
+    container_name: db
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=secret
+    ports:
+      - 5432:5432
+    volumes:
+      - mlops:/var/lib/postgresql/data
+volumes:
+  mlops:
