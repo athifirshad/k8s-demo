@@ -10,9 +10,5 @@ dev:
 run:
 	@go run ./cmd/api
 
-psql:
-	docker exec -it postgres psql -U root contacts
-
-
 kill:
-	kubectl delete rollout contacts-backend-rollout
+	kubectl delete rollout api-rollout
