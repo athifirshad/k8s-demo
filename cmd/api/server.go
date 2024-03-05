@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+	"fmt"
 	"net/http"
 	"time"
 )
@@ -15,13 +16,13 @@ func (app *application) serve() error {
 		WriteTimeout: 30 * time.Second,
 	}
 
-	app.logger.Sugar().Infof("Starting %s server on %s", app.config.env, srv.Addr)
+	fmt.Printf("Starting server on %s", srv.Addr)
 
 	err := srv.ListenAndServe()
 	if !errors.Is(err, http.ErrServerClosed) {
 		return err
 	}
-	app.logger.Sugar().Infof("stopped server: addr=%s", srv.Addr)
+	fmt.Printf("stopped server: addr=%s", srv.Addr)
 
 	return nil
 }

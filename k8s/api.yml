@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: contacts-backend-deployment
+  name: api-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: contacts-backend
+      app: api
   template:
     metadata:
       labels:
-        app: contacts-backend
+        app: api
     spec:
       containers:
-        - name: contacts-backend-container
-          image: ghcr.io/athifirshad/contacts-backend:1.0
+        - name: api-container
+          image: ghcr.io/athifirshad/demo:1.0
           resources:
             requests:
               memory: "64Mi"
@@ -24,9 +24,6 @@ spec:
               cpu: "500m"
           ports:
             - containerPort: 4000
-          env:
-            - name: DB_DSN
-              value: "host=host.minikube.internal port=5432 user=root password=secret dbname=contacts"
 
 ---
 apiVersion: v1
@@ -35,7 +32,7 @@ metadata:
   name: contacts-backend-service
 spec:
   selector:
-    app: contacts-backend
+    app: api
   ports:
     - protocol: TCP
       name: web-port

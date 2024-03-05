@@ -1,10 +1,10 @@
 VERSION ?= latest
 
 build:
-	@docker build -t ghcr.io/athifirshad/contacts-backend:$(VERSION) .
+	@docker build -t ghcr.io/athifirshad/demo:$(VERSION) .
 
 push:
-	@docker push ghcr.io/athifirshad/contacts-backend:$(VERSION)
+	@docker push ghcr.io/athifirshad/demo:$(VERSION)
 dev: 
 	@docker compose up
 run:
@@ -13,8 +13,6 @@ run:
 psql:
 	docker exec -it postgres psql -U root contacts
 
-createdb:
-	docker exec -it postgres createdb --user=root --owner=root contacts
 
 kill:
 	kubectl delete rollout contacts-backend-rollout

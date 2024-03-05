@@ -1,20 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
- name: contacts-backend-rollout
+ name:api-rollout
 spec:
  replicas: 1
  selector:
     matchLabels:
-      app: contacts-backend
+      app: api
  template:
     metadata:
       labels:
-        app: contacts-backend
+        app: api
     spec:
       containers:
-      - name: contacts-backend-container
-        image: ghcr.io/athifirshad/contacts-backend:1.1
+      - name: demo
+        image: ghcr.io/athifirshad/demo:1.1
         ports:
         - containerPort: 4000
  strategy:
