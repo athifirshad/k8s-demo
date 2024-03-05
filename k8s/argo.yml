@@ -9,7 +9,7 @@ spec:
     namespace: 'default'
     server: 'https://kubernetes.default.svc'
   source:
-    path: k8s/rollout.yml
+    path: k8s/
     repoURL: 'https://github.com/athifirshad/k8s-demo'
     targetRevision: HEAD
   sources: []
