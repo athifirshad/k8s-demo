@@ -1,44 +1,44 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
- name: contacts-backend-deployment
+  name: contacts-backend-deployment
 spec:
- replicas: 1
- selector:
+  replicas: 1
+  selector:
     matchLabels:
       app: contacts-backend
- template:
+  template:
     metadata:
       labels:
         app: contacts-backend
     spec:
       containers:
-      - name: contacts-backend-container
-        image: localhost:5000/contacts-backend:latest
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "250m"
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
-        ports:
-        - containerPort: 4000
-        env:
-        - name: DB_DSN
-          value: "postgres://root:secret@postgres:5432/contacts"
+        - name: contacts-backend-container
+          image: ghcr.io/athifirshad/contacts-backend:latest
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 4000
+          env:
+            - name: DB_DSN
+              value: "host=host.minikube.internal port=5432 user=root password=secret dbname=contacts"
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
- name: contacts-backend-service
+  name: contacts-backend-service
 spec:
- selector:
+  selector:
     app: contacts-backend
- ports:
+  ports:
     - protocol: TCP
       name: web-port
       port: 4000
       targetPort: 4000
- type: LoadBalancer
+  type: LoadBalancer

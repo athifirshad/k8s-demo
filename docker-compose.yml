@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   api:
-    image: contacts-backend:${IMAGE_VERSION:-latest}
+    image: ghcr.io/athifirshad/contacts-backend:latest
     container_name: backend
     build:
       context: ./
