@@ -1,8 +1,10 @@
+VERSION ?= latest
+
 build:
-	@docker build -t ghcr.io/athifirshad/contacts-backend:latest .
+	@docker build -t ghcr.io/athifirshad/contacts-backend:$(VERSION) .
 
 push:
-	@docker push ghcr.io/athifirshad/contacts-backend:latest
+	@docker push ghcr.io/athifirshad/contacts-backend:$(VERSION)
 dev: 
 	@docker compose up
 run:

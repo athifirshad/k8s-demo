@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+ name: contacts-backend-rollout
+spec:
+ replicas: 1
+ selector:
+    matchLabels:
+      app: contacts-backend
+ template:
+    metadata:
+      labels:
+        app: contacts-backend
+    spec:
+      containers:
+      - name: contacts-backend-container
+        image: ghcr.io/athifirshad/contacts-backend:1.1
+        ports:
+        - containerPort: 4000
+ strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - pause: {duration: 600}
+      - setWeight: 50
+      - pause: {duration: 600}
+      - setWeight: 80
+      - pause: {duration: 600}
+      - setWeight: 100
