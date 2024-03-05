@@ -13,8 +13,8 @@ spec:
         app: api
     spec:
       containers:
-      - name: demo
-        image: ghcr.io/athifirshad/demo:1.1
+      - name: api-container
+        image: ghcr.io/athifirshad/api:1.1
         ports:
         - containerPort: 4000
  strategy:
