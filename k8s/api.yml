@@ -29,7 +29,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: contacts-backend-service
+  name: api-service
 spec:
   selector:
     app: api

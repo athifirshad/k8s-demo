@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
- name:api-rollout
+ name: api-rollout
 spec:
  replicas: 1
  selector:
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: api-container
-        image: ghcr.io/athifirshad/api:1.1
+        image: ghcr.io/athifirshad/demo:1.1
         ports:
         - containerPort: 4000
  strategy:
