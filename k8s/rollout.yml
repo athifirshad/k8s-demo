@@ -3,7 +3,7 @@ kind: Rollout
 metadata:
  name: api-rollout
 spec:
- replicas: 1
+ replicas: 3
  selector:
     matchLabels:
       app: api
@@ -21,9 +21,9 @@ spec:
     canary:
       steps:
       - setWeight: 20
-      - pause: {duration: 60}
+      - pause: {duration: "30s"}
       - setWeight: 50
-      - pause: {duration: 60}
-      - setWeight: 80
-      - pause: {duration: 60}
+      - pause: {duration: "30s"}
       - setWeight: 100
+      canaryService: api-canary
+      stableService: api-stable
