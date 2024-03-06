@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: api-rollout
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+      - name: api-container
+        image: ghcr.io/athifirshad/demo:1.1
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 4000
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - pause: {duration: "30s"}
+      - setWeight: 40
+      - pause: {duration: "30s"}
+      - setWeight: 70
+      - pause: {duration: "30s"}
+      - setWeight: 100
+      canaryService: api-canary
+      stableService: api-stable
