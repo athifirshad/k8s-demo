@@ -116,7 +116,7 @@ It should be visible on the argo dashboard -
  kubectl apply -f k8s/rollout.yml
 ```
 
-You can also the kubernetes dashboard by executing the command below which will return a link:
+You can also view the kubernetes dashboard by executing the command below which will return a link:
 
 ```bash
  minikube dashboard
