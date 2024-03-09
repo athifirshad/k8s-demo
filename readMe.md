@@ -256,15 +256,3 @@ You can delete this instance of minikube with -
 minikube delete
 ```
 
-# Difficulties I Faced
-
-### Knowledge Gap 
-
- I had a somewhat vague idea of how kubernetes worked and I had no idea on how to use it. For this assignment, the 3 days I had gotten, majority was spent on learning and research. I had read many articles and watched couple of vides. However to truly grok the concepts, I referred the following books -
-
-[Platform Engineering on Kubernetes By Mauricio Salatino](https://learning.oreilly.com/api/v1/continue/9781617299322/)
-
-[Kubernetes: Up and Running, 3rd Edition By Brendan Burns, Joe Beda, Kelsey Hightower, Lachlan Evenson](https://learning.oreilly.com/library/view/kubernetes-up-and/9781098110192/)
-
-I spent more time learning than coding. 
-
